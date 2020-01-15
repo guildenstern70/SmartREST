@@ -10,6 +10,7 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.stream.Stream;
 
 @Service
@@ -32,27 +33,20 @@ public class DbInitializer implements ApplicationRunner
 
         Person[] persons = new Person[]{
                 new Person("Alessio", "Saltarin",
-                        "alessiosaltarin@gmail.com"),
+                        "alessiosaltarin@gmail.com", Group.ADMINISTRATOR),
                 new Person("Laura", "Renzi",
-                        "laurarenzi@gmail.com"),
+                        "laurarenzi@gmail.com", Group.USER),
                 new Person("Elena", "Santandrea",
-                        "elenasan@gmail.com"),
+                        "elenasan@gmail.com", Group.USER),
                 new Person("Filippo", "Giusti",
-                        "filippogiuisti@outlook.com")
+                        "filippogiuisti@outlook.com", Group.GUEST)
         };
 
-        for (var p : persons)
-        {
-            logger.info("Looking for " + p.getEmail());
-            if (this.personDAO.findByEmail(p.getEmail()) == null)
-            {
-                logger.info("Saving " + p);
-                this.personDAO.save(p);
-            }
-            else
-            {
-                logger.info("... it exists with ID=" + p.getId());
-            }
-        }
+        Arrays.stream(persons)
+                .forEach(p -> {
+                    logger.info("Saving " + p);
+                    this.personDAO.save(p);
+                });
+
     }
 }
