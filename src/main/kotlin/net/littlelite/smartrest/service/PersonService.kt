@@ -35,4 +35,14 @@ class PersonService(
             PersonDTO.create(this.personDAO.save(person.toPerson()))
         }
     }
+
+    fun editPerson(id: Long, person: NewPersonDTO): PersonDTO?
+    {
+        val optExistingPerson = this.personDAO.findById(id)
+        if (optExistingPerson.isEmpty)
+            return null
+        val existingPerson = optExistingPerson.get()
+        existingPerson.changeTo(person)
+        return PersonDTO.create(this.personDAO.save(existingPerson))
+    }
 }

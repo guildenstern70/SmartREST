@@ -53,6 +53,21 @@ public class PersonController
         return new ResponseEntity<>(person, OK);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<?> editPersonById(@PathVariable("id") long id,
+                                            @Valid @RequestBody NewPersonDTO person)
+    {
+        this.logger.info("Received PUT REQUEST for Person #" + id);
+
+        var modifiedPerson = this.personService.editPerson(id, person);
+        if (modifiedPerson == null)
+        {
+            throw new ResourceNotFoundException(id);
+        }
+
+        return new ResponseEntity<>(person, OK);
+    }
+
     @PostMapping
     public ResponseEntity<?> createPerson(@Valid @RequestBody NewPersonDTO person,
                                          UriComponentsBuilder uriComponentsBuilder)

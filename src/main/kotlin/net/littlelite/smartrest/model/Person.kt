@@ -1,26 +1,36 @@
 package net.littlelite.smartrest.model
 
+import net.littlelite.smartrest.dto.NewPersonDTO
 import java.util.*
 import javax.persistence.*
 
 @Entity
 data class Person(
-        val name: String,
+        var name: String,
 
-        val surname: String,
+        var surname: String,
 
-        val email: String,
+        var email: String,
 
         @Enumerated(EnumType.STRING)
-        val groupType: Group
+        var groupType: Group
 )
 {
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
         var id: Long = -1
 
-        val creationDate = Date()
+        var creationDate = Date()
 
         constructor() : this("?", "?", "", Group.UNKNOWN)
+
+        fun changeTo(newFields: NewPersonDTO)
+        {
+                this.creationDate = Date()
+                this.email = newFields.email
+                this.groupType = newFields.group
+                this.name = newFields.name
+                this.surname = newFields.surname
+        }
 
 }
