@@ -1,17 +1,21 @@
 package net.littlelite.smartrest.controller.rest;
 
+import net.littlelite.smartrest.dto.NewPersonDTO;
 import net.littlelite.smartrest.dto.PersonDTO;
+import net.littlelite.smartrest.exceptions.ResourceAlreadyExists;
 import net.littlelite.smartrest.exceptions.ResourceNotFoundException;
+import net.littlelite.smartrest.model.Person;
 import net.littlelite.smartrest.service.PersonService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.util.List;
 
 import static org.springframework.http.HttpStatus.OK;
@@ -47,6 +51,31 @@ public class PersonController
             throw new ResourceNotFoundException(id);
 
         return new ResponseEntity<>(person, OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<?> createPerson(@Valid @RequestBody NewPersonDTO person,
+                                         UriComponentsBuilder uriComponentsBuilder)
+    {
+        this.logger.info("Received POST REQUEST to create a new person");
+
+        var createdPerson = this.personService.createPerson(person);
+        if (createdPerson == null)
+        {
+            this.logger.warn("A person with email " + person.getEmail() + " already exists.");
+            throw new ResourceAlreadyExists(person.getEmail());
+        }
+        else
+        {
+            final HttpHeaders headers = new HttpHeaders();
+            headers.setLocation(uriComponentsBuilder.path("/api/v1/persons/{id}")
+                    .buildAndExpand(
+                            createdPerson.getId()
+                    )
+                    .toUri()
+            );
+            return new ResponseEntity<>(headers, HttpStatus.CREATED);
+        }
     }
 
 }

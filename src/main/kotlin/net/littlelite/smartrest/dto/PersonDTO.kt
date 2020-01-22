@@ -5,8 +5,7 @@ import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
-
-class PersonDTO(
+data class PersonDTO(
         val id: Long,
         val name: String,
         val surname: String,

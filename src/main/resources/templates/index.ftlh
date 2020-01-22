@@ -27,10 +27,10 @@
                 </small>
             </div>
             <br/>
-            <p><a class="btn btn-primary btn-lg" href="#" role="button">API Documentation</a></p>
+            <p><a class="btn btn-primary btn-lg" href="swagger-ui.html" role="button">API Documentation</a></p>
         </div>
         <div class="pull-right">
-            <small><a href="/h2">Database Console</a></small>
+            <small><a href="/h2">Database Console</a> (<i>jdbc:h2:mem:testdb</i>)</small>
         </div>
     </div>
 

@@ -60,6 +60,9 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-freemarker:$springboot_version")
 	implementation("org.springframework.boot:spring-boot-starter-hateoas:$springboot_version")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version")
+	implementation("org.springframework.plugin:spring-plugin-core:1.2.0.RELEASE")
+	implementation("io.springfox:springfox-swagger2:$swagger_version")
+	implementation("io.springfox:springfox-swagger-ui:$swagger_version")
 	runtimeOnly("com.h2database:h2:$h2_version")
 	implementation("org.jetbrains.kotlin:kotlin-reflect:$kotlin_version")
 	testImplementation("org.springframework.boot:spring-boot-starter-test:$springboot_version") {
