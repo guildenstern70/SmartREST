@@ -36,6 +36,11 @@ class PersonService(
         }
     }
 
+    fun deletePerson(id: Long)
+    {
+        this.personDAO.deleteById(id)
+    }
+
     fun editPerson(id: Long, person: NewPersonDTO): PersonDTO?
     {
         val optExistingPerson = this.personDAO.findById(id)

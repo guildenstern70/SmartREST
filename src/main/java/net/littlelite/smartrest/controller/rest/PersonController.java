@@ -41,6 +41,14 @@ public class PersonController
         return new ResponseEntity<>(this.personService.getAllPersons(), OK);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deletePersonById(@PathVariable("id") long id)
+    {
+        logger.info("DELETE person #" + id);
+        this.personService.deletePerson(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<?> getPersonById(@PathVariable("id") long id)
     {
