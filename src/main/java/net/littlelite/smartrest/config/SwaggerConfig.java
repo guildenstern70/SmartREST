@@ -98,13 +98,13 @@ public class SwaggerConfig
     private ApiInfo apiInfo(String version)
     {
         return new ApiInfo(
-                "IBM Bocconi Campus API",
-                "Urban Campus Digital Identity Services.",
+                "SmartREST",
+                "OpenAPI REST Project Template",
                 version,
                 "Terms of service",
-                "IBM GBS iX",
-                "License of API",
-                "http://www.ibm.com/it-it/");
+                "Alessio Saltarin <alessiosaltarin@gmail.com",
+                "GIT Repository",
+                "https://github.com/guildenstern70/SmartREST");
     }
 
     @NotNull
