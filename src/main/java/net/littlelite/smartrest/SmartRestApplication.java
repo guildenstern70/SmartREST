@@ -1,6 +1,10 @@
+/*
+ * Copyright (c) Alessio Saltarin 2020.
+ * This software is licensed under MIT License (see LICENSE)
+ */
+
 package net.littlelite.smartrest;
 
-import net.littlelite.smartrest.controller.rest.PersonController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;

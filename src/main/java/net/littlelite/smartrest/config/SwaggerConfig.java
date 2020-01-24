@@ -1,10 +1,9 @@
-package net.littlelite.smartrest.config;
-
 /*
- * Copyright (c) IBM Corporation 2018-2019.
- * This is copyrighted software. All rights reserved.
- * IBM - Bocconi - Urban Campus Project
+ * Copyright (c) Alessio Saltarin 2020.
+ * This software is licensed under MIT License (see LICENSE)
  */
+
+package net.littlelite.smartrest.config;
 
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;

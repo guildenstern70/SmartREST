@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) Alessio Saltarin 2020.
+ * This software is licensed under MIT License (see LICENSE)
+ */
+
 package net.littlelite.smartrest.controller.web;
 
 import org.jetbrains.annotations.NotNull;

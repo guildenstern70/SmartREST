@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) Alessio Saltarin 2020.
+ * This software is licensed under MIT License (see LICENSE)
+ */
+
 package net.littlelite.smartrest.service;
 
 import net.littlelite.smartrest.dao.PersonDAO;
@@ -11,7 +16,6 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
-import java.util.stream.Stream;
 
 @Service
 public class DbInitializer implements ApplicationRunner

@@ -1,10 +1,14 @@
+/*
+ * Copyright (c) Alessio Saltarin 2020.
+ * This software is licensed under MIT License (see LICENSE)
+ */
+
 package net.littlelite.smartrest.controller.rest;
 
 import net.littlelite.smartrest.dto.NewPersonDTO;
 import net.littlelite.smartrest.dto.PersonDTO;
 import net.littlelite.smartrest.exceptions.ResourceAlreadyExists;
 import net.littlelite.smartrest.exceptions.ResourceNotFoundException;
-import net.littlelite.smartrest.model.Person;
 import net.littlelite.smartrest.service.PersonService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

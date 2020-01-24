@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) Alessio Saltarin 2020.
+ * This software is licensed under MIT License (see LICENSE)
+ */
+
 package net.littlelite.smartrest.controller;
 
 import net.littlelite.smartrest.exceptions.ResourceAlreadyExists;
