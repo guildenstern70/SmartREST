@@ -5,6 +5,8 @@
 
 package net.littlelite.smartrest.exceptions;
 
+import org.jetbrains.annotations.NotNull;
+
 public class ResourceNotFoundException extends RuntimeException
 {
     public ResourceNotFoundException(long id)
@@ -17,12 +19,12 @@ public class ResourceNotFoundException extends RuntimeException
         super("Could not find resource with id: '" + id + "'");
     }
 
-    public ResourceNotFoundException(Class<?> entityClass, String id)
+    public ResourceNotFoundException(@NotNull Class<?> entityClass, String id)
     {
         super(entityClass.getSimpleName() + " #" + id + " not found");
     }
 
-    public ResourceNotFoundException(Class<?> entityClass, int id)
+    public ResourceNotFoundException(@NotNull Class<?> entityClass, int id)
     {
         super(entityClass.getSimpleName() + " #" + id + " not found");
     }

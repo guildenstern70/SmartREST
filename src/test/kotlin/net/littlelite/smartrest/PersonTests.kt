@@ -23,7 +23,7 @@ internal class PersonTests
     private lateinit var personService: PersonService
 
     @Test
-    fun `Should have a working person service`()
+    fun `Should invoke a working person service`()
     {
         assertThat(this.personService).isNotNull
     }
@@ -54,5 +54,16 @@ internal class PersonTests
 
         this.personService.deletePerson(created.id)
         assertThat(this.personService.getAllPersons().size).isEqualTo(4)
+    }
+
+    @Test
+    fun `Should get a person by name and surname`()
+    {
+        val alessioPersons = this.personService.getPersonsByFullName("Alessio", "Saltarin")
+        assertThat(alessioPersons).isNotNull
+        assertThat(alessioPersons!!.size).isEqualTo(1)
+        val alessio = alessioPersons[0]
+        assertThat(alessio.name).isEqualTo("Alessio")
+        assertThat(alessio.surname).isEqualTo("Saltarin")
     }
 }

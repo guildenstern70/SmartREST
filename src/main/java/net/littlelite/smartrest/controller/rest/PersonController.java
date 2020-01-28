@@ -53,6 +53,32 @@ public class PersonController
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    @GetMapping("findby/name/{name}/surname/{surname}")
+    public ResponseEntity<?> getPersonByNameAndSurname(@PathVariable("name") String name,
+                                                       @PathVariable("surname") String surname)
+    {
+        logger.info("GET person by name=" + name + " and surname=" +surname);
+        var persons = this.personService.getPersonsByFullName(name, surname);
+
+        if (persons == null)
+            throw new ResourceNotFoundException(name + " " + surname);
+
+        return new ResponseEntity<>(persons.stream().map(PersonDTO::create), OK);
+    }
+
+    @GetMapping("findbynameandsurname")
+    public ResponseEntity<?> getPersonByNameAndSurnameQueries(@RequestParam("name") String name,
+                                                       @RequestParam("surname") String surname)
+    {
+        logger.info("GET person by queries name=" + name + " and surname=" +surname);
+        var persons = this.personService.getPersonsByFullName(name, surname);
+
+        if (persons == null)
+            throw new ResourceNotFoundException(name + " " + surname);
+
+        return new ResponseEntity<>(persons.stream().map(PersonDTO::create), OK);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<?> getPersonById(@PathVariable("id") long id)
     {

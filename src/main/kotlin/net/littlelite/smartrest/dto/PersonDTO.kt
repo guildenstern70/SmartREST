@@ -25,6 +25,7 @@ data class PersonDTO(
      */
     companion object Factory
     {
+        @JvmStatic
         fun create(person: Person?): PersonDTO?
         {
             if (person == null)

@@ -8,6 +8,7 @@ package net.littlelite.smartrest.service
 import net.littlelite.smartrest.dao.PersonDAO
 import net.littlelite.smartrest.dto.NewPersonDTO
 import net.littlelite.smartrest.dto.PersonDTO
+import net.littlelite.smartrest.model.Person
 import org.springframework.stereotype.Service
 
 @Service
@@ -19,6 +20,13 @@ class PersonService(
             this.personDAO.findAll().toList().mapNotNull {
                 PersonDTO.create(it)
             }
+
+
+    fun getPersonsByFullName(name: String, surname: String): List<Person>?
+    {
+        return this.personDAO.findByNameAndSurnameOrderBySurnameDesc(name, surname);
+    }
+
 
     fun getPerson(id: Long): PersonDTO?
     {

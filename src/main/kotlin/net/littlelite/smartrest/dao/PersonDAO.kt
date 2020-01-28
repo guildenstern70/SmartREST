@@ -13,7 +13,8 @@ import org.springframework.stereotype.Repository
 @Repository
 interface PersonDAO : CrudRepository<Person, Long>
 {
-    fun findBySurname(lastName: String): Person?
+    fun findBySurname(lastName: String): List<Person>?
     fun findByEmail(email: String): Person?
+    fun findByNameAndSurnameOrderBySurnameDesc(name: String, surname: String): List<Person>?
     fun findByGroupType(group: Group): List<Person>?
 }
