@@ -21,7 +21,6 @@ class PersonService(
                 PersonDTO.create(it)
             }
 
-
     fun getPersonsByFullName(name: String, surname: String): List<Person>?
     {
         return this.personDAO.findByNameAndSurnameOrderBySurnameDesc(name, surname);
