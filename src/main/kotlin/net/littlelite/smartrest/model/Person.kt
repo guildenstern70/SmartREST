@@ -27,6 +27,11 @@ data class Person(
 
         var creationDate = Date()
 
+        @OneToMany(cascade = [(CascadeType.ALL)],
+                   fetch = FetchType.EAGER,
+                   mappedBy = "id")
+        var phones = mutableListOf<Phone>()
+
         constructor() : this("?", "?", "", Group.UNKNOWN)
 
         fun changeTo(newFields: NewPersonDTO)

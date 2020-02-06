@@ -17,11 +17,12 @@ data class NewPersonDTO(
 {
     fun toPerson(): Person
     {
-        return Person(
+        val p = Person(
                 this.name,
                 this.surname,
                 this.email,
                 this.group
         )
+        return p
     }
 }

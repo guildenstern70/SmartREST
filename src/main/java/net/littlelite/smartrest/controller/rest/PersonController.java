@@ -112,7 +112,7 @@ public class PersonController
     {
         this.logger.info("Received POST REQUEST to create a new person");
 
-        var createdPerson = this.personService.createPerson(person);
+        var createdPerson = this.personService.createPerson(person, null);
         if (createdPerson == null)
         {
             this.logger.warn("A person with email " + person.getEmail() + " already exists.");

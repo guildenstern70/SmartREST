@@ -16,7 +16,8 @@ data class PersonDTO(
         val surname: String,
         val email: String,
         val creationDate: String,
-        val group: String
+        val group: String,
+        val phones: List<PhoneDTO>
 )
 {
     /**
@@ -34,11 +35,17 @@ data class PersonDTO(
             val creation = this.dateToString(person.creationDate)
             val group = person.groupType.name
 
+            val phones = person.phones.map {
+                PhoneDTO( it.number, it.provider )
+            }
+
             return PersonDTO(person.id,
                     person.name,
                     person.surname,
                     person.email,
-                    creation, group)
+                    creation,
+                    group,
+                    phones)
         }
 
         private fun dateToString(date: Date): String
