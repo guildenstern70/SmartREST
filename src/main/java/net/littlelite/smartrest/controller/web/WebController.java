@@ -5,6 +5,7 @@
 
 package net.littlelite.smartrest.controller.web;
 
+import net.littlelite.smartrest.SmartRestApplication;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,14 +14,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * Home page Capital Reporting controller
+ * Home page controller
  */
 @Controller
 public class WebController
 {
     private final Logger logger = LoggerFactory.getLogger(WebController.class);
 
-    private static final String VERSION = "0.1.0";
+    private static final String VERSION = SmartRestApplication.VERSION;
 
     /**
      * the REST request for / resource.
