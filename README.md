@@ -13,4 +13,8 @@ A template project with
     
 ### Run docker image
 
-    docker run --publish 8080:8080 --name SmartRest smartrest:1.0    
+    docker run --publish 8080:8080 --name SmartRest smartrest:1.0   
+    
+### Install to Kubernetes using Helm
+
+    helm install --generate-name ./helm
