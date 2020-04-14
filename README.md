@@ -7,3 +7,10 @@ A template project with
 * REST
 * Apache FreeMarker Template
 
+### Build as Docker image
+
+    docker build --build-arg JAR_FILE=build/libs/SmartRest.jar -t smartrest:1.0 .
+    
+### Run docker image
+
+    docker run --publish 8080:8080 --name SmartRest smartrest:1.0    
