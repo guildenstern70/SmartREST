@@ -8,21 +8,34 @@ package net.littlelite.smartrest;
 import net.littlelite.BuildConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.core.env.Environment;
 
 @SpringBootApplication
 public class SmartRestApplication implements CommandLineRunner
 {
+
+	private Environment environment;
+
+	@Autowired
+	public SmartRestApplication(Environment environment)
+	{
+		this.environment = environment;
+	}
+
 	private final Logger logger = LoggerFactory.getLogger(SmartRestApplication.class);
 	public static final String VERSION = BuildConfig.VERSION + " (" + BuildConfig.BUILD_DATE.getTime() + ")";
 
 	private void hello()
 	{
+		String runningUrl = "http://localhost:" + this.environment.getProperty("local.server.port");
 		logger.info("*****************************************************************");
 		logger.info("  SmartREST v." + VERSION);
-		logger.info("  Running on http://localhost:8080 (JVM " + System.getProperty("java.version") + ")");
+		logger.info("  Running on " + runningUrl + " (JVM " + System.getProperty("java.version") + ")");
 		logger.info("*****************************************************************");
 	}
 
