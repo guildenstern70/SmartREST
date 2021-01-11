@@ -1,5 +1,11 @@
 #!/usr/bin/env sh
 
+#
+# Project SmartREST
+# Copyright (c) Alessio Saltarin 2021.
+# This software is licensed under MIT License (see LICENSE)
+#
+
 ##############################################################################
 ##
 ##  Gradle start up script for UN*X

@@ -1,5 +1,6 @@
 /*
- * Copyright (c) Alessio Saltarin 2020.
+ * Project SmartREST
+ * Copyright (c) Alessio Saltarin 2021.
  * This software is licensed under MIT License (see LICENSE)
  */
 
@@ -7,29 +8,32 @@ package net.littlelite.smartrest.controller;
 
 import net.littlelite.smartrest.exceptions.ResourceAlreadyExists;
 import net.littlelite.smartrest.exceptions.ResourceNotFoundException;
-import org.jetbrains.annotations.NotNull;
-import org.springframework.hateoas.mediatype.vnderrors.VndErrors;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @ControllerAdvice
-@RequestMapping(produces = "application/vnd.error")
-public class ResourceControllerAdvice
+public class ResourceControllerAdvice extends ResponseEntityExceptionHandler
 {
-    @ResponseBody
     @ExceptionHandler(ResourceNotFoundException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    VndErrors resourceNotFoundExceptionHandler(@NotNull ResourceNotFoundException ex)
-    {
-        return new VndErrors("Not Found Error", ex.getMessage());
+    public ResponseEntity<Object> resourceNotFoundExceptionHandler(
+            ResourceNotFoundException ex, WebRequest request) {
+
+        String bodyOfResponse = "Error: Resource not found. " + ex.getMessage();
+        return handleExceptionInternal(ex, bodyOfResponse,
+                new HttpHeaders(), HttpStatus.NOT_FOUND, request);
     }
 
-    @ResponseBody
     @ExceptionHandler(ResourceAlreadyExists.class)
-    @ResponseStatus(HttpStatus.CONFLICT)
-    VndErrors resourceAlreadyExistsExceptionHandler(ResourceAlreadyExists ex)
-    {
-        return new VndErrors("Already Exist Error", ex.getMessage());
+    public ResponseEntity<Object> resourceAlreadyExistsExceptionHandler(
+            ResourceAlreadyExists ex, WebRequest request) {
+
+        String bodyOfResponse = "Error: Resource already exists. " + ex.getMessage();
+        return handleExceptionInternal(ex, bodyOfResponse,
+                new HttpHeaders(), HttpStatus.CONFLICT, request);
     }
 
 }
