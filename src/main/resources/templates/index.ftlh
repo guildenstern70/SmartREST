@@ -8,39 +8,49 @@
     <meta name="robots" content="noindex,nofollow">
     <meta name="googlebot" content="noindex">
     <title>SMART REST - SpringBoot API template</title>
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
           crossorigin="anonymous">
 </head>
 
 <body>
 
-<div class="container" style="margin-top: 20px">
+<style>
+    .jumbotron {
+        padding: 2rem 1rem;
+        margin: 1rem 0rem 5rem 0rem;
+        background-color: #b6c9dd;
+        border-radius: .3rem;
+        display: block;
+    }
 
-    <div class="container" style="margin-top: 80px">
-        <div class="jumbotron">
-            <h2 style="font-size: 50px">SMART REST</h2>
-            <p>A REST Template API</p>
-            <div>
-                <small style="color: darkgray">Smart REST v.<span id="version">${version}</span>
-                </small>
-            </div>
-            <br/>
-            <p><a class="btn btn-primary btn-lg" href="swagger-ui.html" role="button">API Documentation</a></p>
+    .jumbotitle {
+        color: bisque;
+        font-weight: bold;
+    }
+
+</style>
+
+
+<div class="container mt-5">
+    <div class="jumbotron">
+        <h2 class="display-5 jumbotitle text-primary">SmartREST</h2>
+        <p class="lead">A REST Template written with SpringBoot</p>
+        <hr class="my-4" />
+        <div>
+            <small>Smart REST v.<span id="version">${version}</span></small>
         </div>
-        <div class="pull-right">
-            <small><a href="/h2">Database Console</a> (<i>jdbc:h2:mem:testdb</i>)</small>
+        <div class="mt-4">
+            <a class="btn btn-primary btn-lg" href="swagger-ui.html" role="button">API Documentation</a>
+            &nbsp;
+            <a class="btn btn-success btn-lg" href="/h2" role="button">H2 DB Console</a>
         </div>
     </div>
-
 </div>
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+<!-- Bootstrap JavaScript Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"></script>
 
 </body>
