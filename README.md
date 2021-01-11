@@ -10,6 +10,10 @@ A template project with
 ### Build as Docker image
 
     docker build --build-arg JAR_FILE=build/libs/SmartRest.jar -t smartrest:1.0 .
+
+### Tag image to be uploaded to a repository
+
+    docker tag smartrest:1.0 docker.io/[your_user]/smartrest:1.0
     
 ### Run docker image
 
