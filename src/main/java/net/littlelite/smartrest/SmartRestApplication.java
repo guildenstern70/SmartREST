@@ -13,41 +13,40 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.core.env.Environment;
 
 @SpringBootApplication
 public class SmartRestApplication implements CommandLineRunner
 {
 
-	private Environment environment;
+    private Environment environment;
 
-	@Autowired
-	public SmartRestApplication(Environment environment)
-	{
-		this.environment = environment;
-	}
+    @Autowired
+    public SmartRestApplication(Environment environment)
+    {
+        this.environment = environment;
+    }
 
-	private final Logger logger = LoggerFactory.getLogger(SmartRestApplication.class);
-	public static final String VERSION = BuildConfig.VERSION + " (" + BuildConfig.BUILD_DATE.getTime() + ")";
+    private final Logger logger = LoggerFactory.getLogger(SmartRestApplication.class);
+    public static final String VERSION = BuildConfig.VERSION + " (" + BuildConfig.BUILD_DATE.getTime() + ")";
 
-	private void hello()
-	{
-		String runningUrl = "http://localhost:" + this.environment.getProperty("local.server.port");
-		logger.info("*******************************************");
-		logger.info("  SmartREST v." + VERSION);
-		logger.info("  Running on " + runningUrl + " (JVM " + System.getProperty("java.version") + ")");
-		logger.info("*******************************************");
-	}
+    private void hello()
+    {
+        String runningUrl = "http://localhost:" + this.environment.getProperty("local.server.port");
+        logger.info("*******************************************");
+        logger.info("  SmartREST v." + VERSION);
+        logger.info("  Running on " + runningUrl + " (JVM " + System.getProperty("java.version") + ")");
+        logger.info("*******************************************");
+    }
 
-	public static void main(String[] args)
-	{
-		SpringApplication.run(SmartRestApplication.class, args);
-	}
+    public static void main(String[] args)
+    {
+        SpringApplication.run(SmartRestApplication.class, args);
+    }
 
-	@Override
-	public void run(String... args) throws Exception
-	{
-		this.hello();
-	}
+    @Override
+    public void run(String... args) throws Exception
+    {
+        this.hello();
+    }
 }

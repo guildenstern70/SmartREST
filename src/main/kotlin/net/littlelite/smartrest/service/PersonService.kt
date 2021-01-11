@@ -15,19 +15,20 @@ import net.littlelite.smartrest.model.Person
 import net.littlelite.smartrest.model.Phone
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
+import java.util.*
 
 @Service
 class PersonService(
-        val personDAO: PersonDAO,
-        val phoneDAO: PhoneDAO
+    val personDAO: PersonDAO,
+    val phoneDAO: PhoneDAO
 )
 {
     private val logger = LoggerFactory.getLogger(PersonService::class.java)
 
     fun getAllPersons(): List<PersonDTO> =
-            this.personDAO.findAll().toList().mapNotNull {
-                PersonDTO.create(it)
-            }
+        this.personDAO.findAll().toList().mapNotNull {
+            PersonDTO.create(it)
+        }
 
     fun getPersonsByFullName(name: String, surname: String): List<Person>?
     {
@@ -36,9 +37,9 @@ class PersonService(
 
     fun getPerson(id: Long): PersonDTO?
     {
-        val person = this.personDAO.findById(id)
-        if (person.isEmpty) return null
-        return PersonDTO.create(person.get())
+        val person: Optional<Person> = this.personDAO.findById(id)
+        if (person.isPresent) return PersonDTO.create(person.get())
+        return null
     }
 
     fun createPerson(person: NewPersonDTO, phones: List<PhoneDTO>? = null): PersonDTO?
@@ -47,22 +48,18 @@ class PersonService(
         return if (existingPerson != null)
         {
             null // this person already exists
-        }
-        else
+        } else
         {
-            val newPerson = person.toPerson()
-
-            if (phones != null)
-            {
-                for (it in phones)
-                {
-                    val newPhone = Phone(it.number, it.provider, newPerson)
-                    logger.info("Adding new phone => $newPhone")
-                    newPerson.phones.add(newPhone)
+            var newPerson = person.toPerson()
+            newPerson = this.personDAO.save(newPerson)
+            phones?.map {
+                it.toPhone(newPerson)
+            }?.forEach {
+                    this.phoneDAO.save(it)
+                    newPerson.phones.add(it)
                 }
-            }
-
-            PersonDTO.create(this.personDAO.save(newPerson))
+            newPerson = this.personDAO.save(newPerson)
+            PersonDTO.create(newPerson)
         }
     }
 
@@ -74,10 +71,12 @@ class PersonService(
     fun editPerson(id: Long, person: NewPersonDTO): PersonDTO?
     {
         val optExistingPerson = this.personDAO.findById(id)
-        if (optExistingPerson.isEmpty)
-            return null
-        val existingPerson = optExistingPerson.get()
-        existingPerson.changeTo(person)
-        return PersonDTO.create(this.personDAO.save(existingPerson))
+        if (optExistingPerson.isPresent)
+        {
+            val existingPerson = optExistingPerson.get()
+            existingPerson.changeTo(person)
+            return PersonDTO.create(this.personDAO.save(existingPerson))
+        }
+        return null
     }
 }

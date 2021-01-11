@@ -58,7 +58,7 @@ public class PersonController
     public ResponseEntity<?> getPersonByNameAndSurname(@PathVariable("name") String name,
                                                        @PathVariable("surname") String surname)
     {
-        logger.info("GET person by name=" + name + " and surname=" +surname);
+        logger.info("GET person by name=" + name + " and surname=" + surname);
         var persons = this.personService.getPersonsByFullName(name, surname);
 
         if (persons == null)
@@ -69,9 +69,9 @@ public class PersonController
 
     @GetMapping("findbynameandsurname")
     public ResponseEntity<?> getPersonByNameAndSurnameQueries(@RequestParam("name") String name,
-                                                       @RequestParam("surname") String surname)
+                                                              @RequestParam("surname") String surname)
     {
-        logger.info("GET person by queries name=" + name + " and surname=" +surname);
+        logger.info("GET person by queries name=" + name + " and surname=" + surname);
         var persons = this.personService.getPersonsByFullName(name, surname);
 
         if (persons == null)
@@ -109,7 +109,7 @@ public class PersonController
 
     @PostMapping
     public ResponseEntity<?> createPerson(@Valid @RequestBody NewPersonDTO person,
-                                         UriComponentsBuilder uriComponentsBuilder)
+                                          UriComponentsBuilder uriComponentsBuilder)
     {
         this.logger.info("Received POST REQUEST to create a new person");
 

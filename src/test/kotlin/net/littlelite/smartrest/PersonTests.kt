@@ -44,13 +44,15 @@ internal class PersonTests
         val phone1 = PhoneDTO("+39-3494838990", Provider.TIM)
         val phone2 = PhoneDTO("+49-3339292991", Provider.VODAFONE)
         val newPerson = NewPersonDTO(
-                "Ugo",
-                "Tognazzi",
-                "tognazziugo@supercazzola.com",
-                Group.GUEST
+            "Ugo",
+            "Tognazzi",
+            "tognazziugo@supercazzola.com",
+            Group.GUEST
         )
-        val created = this.personService.createPerson(newPerson,
-                listOf(phone1, phone2))
+        val created = this.personService.createPerson(
+            newPerson,
+            listOf(phone1, phone2)
+        )
         assertThat(created).isNotNull
         assertThat(created!!.id).isGreaterThan(0)
         assertThat(created.phones.size).isEqualTo(2)

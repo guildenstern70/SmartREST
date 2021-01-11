@@ -28,7 +28,6 @@
         color: bisque;
         font-weight: bold;
     }
-
 </style>
 
 
@@ -36,7 +35,7 @@
     <div class="jumbotron">
         <h2 class="display-5 jumbotitle text-primary">SmartREST</h2>
         <p class="lead">A REST Template written with SpringBoot</p>
-        <hr class="my-4" />
+        <hr class="my-4"/>
         <div>
             <small>Smart REST v.<span id="version">${version}</span></small>
         </div>

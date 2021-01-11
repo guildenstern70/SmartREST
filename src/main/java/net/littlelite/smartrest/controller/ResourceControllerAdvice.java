@@ -11,7 +11,8 @@ import net.littlelite.smartrest.exceptions.ResourceNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
@@ -20,7 +21,8 @@ public class ResourceControllerAdvice extends ResponseEntityExceptionHandler
 {
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<Object> resourceNotFoundExceptionHandler(
-            ResourceNotFoundException ex, WebRequest request) {
+            ResourceNotFoundException ex, WebRequest request)
+    {
 
         String bodyOfResponse = "Error: Resource not found. " + ex.getMessage();
         return handleExceptionInternal(ex, bodyOfResponse,
@@ -29,7 +31,8 @@ public class ResourceControllerAdvice extends ResponseEntityExceptionHandler
 
     @ExceptionHandler(ResourceAlreadyExists.class)
     public ResponseEntity<Object> resourceAlreadyExistsExceptionHandler(
-            ResourceAlreadyExists ex, WebRequest request) {
+            ResourceAlreadyExists ex, WebRequest request)
+    {
 
         String bodyOfResponse = "Error: Resource already exists. " + ex.getMessage();
         return handleExceptionInternal(ex, bodyOfResponse,

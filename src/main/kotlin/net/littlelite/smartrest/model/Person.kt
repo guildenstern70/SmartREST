@@ -12,36 +12,36 @@ import javax.persistence.*
 
 @Entity
 data class Person(
-        var name: String,
+    var name: String,
 
-        var surname: String,
+    var surname: String,
 
-        var email: String,
+    var email: String,
 
-        @Enumerated(EnumType.STRING)
-        var groupType: Group
+    @Enumerated(EnumType.STRING)
+    var groupType: Group
 )
 {
-        @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
-        var id: Long = -1
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    var id: Long = -1
 
-        var creationDate = Date()
+    var creationDate = Date()
 
-        @OneToMany(cascade = [(CascadeType.ALL)],
-                   fetch = FetchType.EAGER,
-                   mappedBy = "id")
-        var phones = mutableListOf<Phone>()
+    @OneToMany(
+        cascade = [(CascadeType.ALL)],
+        fetch = FetchType.EAGER,
+        mappedBy = "person"
+    )
+    var phones = mutableListOf<Phone>()
 
-        constructor() : this("?", "?", "", Group.UNKNOWN)
-
-        fun changeTo(newFields: NewPersonDTO)
-        {
-                this.creationDate = Date()
-                this.email = newFields.email
-                this.groupType = newFields.group
-                this.name = newFields.name
-                this.surname = newFields.surname
-        }
+    fun changeTo(newFields: NewPersonDTO)
+    {
+        this.creationDate = Date()
+        this.email = newFields.email
+        this.groupType = newFields.group
+        this.name = newFields.name
+        this.surname = newFields.surname
+    }
 
 }
