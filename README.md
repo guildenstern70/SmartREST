@@ -1,5 +1,8 @@
 ## Smart REST 
 
+[![CircleCI](https://circleci.com/gh/guildenstern70/KotlinLearn/tree/master.svg?style=svg)](https://circleci.com/gh/guildenstern70/SmartREST/tree/master)
+[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+
 A template project with
 
 * SpringBoot
