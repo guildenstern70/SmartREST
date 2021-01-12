@@ -11,38 +11,47 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
           rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
           crossorigin="anonymous">
+    <style>
+        .jumbotron {
+            padding: 2rem 1rem;
+            margin: 1rem 0rem 5rem 0rem;
+            background-color: #e3e3e5;
+            border-radius: .3rem;
+            display: block;
+        }
+
+        .jumbotitle {
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
 
-<style>
-    .jumbotron {
-        padding: 2rem 1rem;
-        margin: 1rem 0rem 5rem 0rem;
-        background-color: #b6c9dd;
-        border-radius: .3rem;
-        display: block;
-    }
-
-    .jumbotitle {
-        color: bisque;
-        font-weight: bold;
-    }
-</style>
-
-
-<div class="container mt-5">
-    <div class="jumbotron">
-        <h2 class="display-5 jumbotitle text-primary">SmartREST</h2>
-        <p class="lead">A REST Template written with SpringBoot</p>
-        <hr class="my-4"/>
-        <div>
-            <small>Smart REST v.<span id="version">${version}</span></small>
-        </div>
-        <div class="mt-4">
-            <a class="btn btn-primary btn-lg" href="swagger-ui.html" role="button">API Documentation</a>
+<div class="container">
+    <div class="row">
+        <div class="col">
             &nbsp;
-            <a class="btn btn-success btn-lg" href="/h2" role="button">H2 DB Console</a>
+        </div>
+        <div class="col-10">
+            <div class="container mt-5">
+                <div class="jumbotron border">
+                    <h2 class="display-5 jumbotitle text-primary">SmartREST</h2>
+                    <p class="lead">A REST Template written with SpringBoot</p>
+                    <hr class="my-4"/>
+                    <div>
+                        <small class="text-secondary">Smart REST v.<span id="version">${version}</span></small>
+                    </div>
+                    <div class="mt-4">
+                        <a class="btn btn-primary btn-lg" href="swagger-ui.html" role="button">API Documentation</a>
+                        &nbsp;
+                        <a class="btn btn-success btn-lg" href="/h2" role="button">H2 DB Console</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            &nbsp;
         </div>
     </div>
 </div>
