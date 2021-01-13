@@ -13,8 +13,7 @@ data class Phone(
     val number: String,
     val provider: Provider,
     @ManyToOne
-    @JoinColumn(name="person_id", nullable=false)
-    val person: Person? = null
+    var person: Person? = null
 )
 {
     @Id

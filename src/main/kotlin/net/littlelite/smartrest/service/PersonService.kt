@@ -26,8 +26,8 @@ class PersonService(
     private val logger = LoggerFactory.getLogger(PersonService::class.java)
 
     fun getAllPersons(): List<PersonDTO> =
-        this.personDAO.findAll().toList().mapNotNull {
-            PersonDTO.create(it)
+        this.personDAO.findAll().mapNotNull {
+            PersonDTO.fromPerson(it)
         }
 
     fun getPersonsByFullName(name: String, surname: String): List<Person>?
@@ -38,7 +38,7 @@ class PersonService(
     fun getPerson(id: Long): PersonDTO?
     {
         val person: Optional<Person> = this.personDAO.findById(id)
-        if (person.isPresent) return PersonDTO.create(person.get())
+        if (person.isPresent) return PersonDTO.fromPerson(person.get())
         return null
     }
 
@@ -48,18 +48,16 @@ class PersonService(
         return if (existingPerson != null)
         {
             null // this person already exists
-        } else
+        }
+        else
         {
             var newPerson = person.toPerson()
+            if (phones != null)
+            {
+                newPerson.setPhones( phones.map { it.toPhone() } )
+            }
             newPerson = this.personDAO.save(newPerson)
-            phones?.map {
-                it.toPhone(newPerson)
-            }?.forEach {
-                    this.phoneDAO.save(it)
-                    newPerson.phones.add(it)
-                }
-            newPerson = this.personDAO.save(newPerson)
-            PersonDTO.create(newPerson)
+            PersonDTO.fromPerson(newPerson)
         }
     }
 
@@ -75,7 +73,7 @@ class PersonService(
         {
             val existingPerson = optExistingPerson.get()
             existingPerson.changeTo(person)
-            return PersonDTO.create(this.personDAO.save(existingPerson))
+            return PersonDTO.fromPerson(this.personDAO.save(existingPerson))
         }
         return null
     }

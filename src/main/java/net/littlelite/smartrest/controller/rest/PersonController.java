@@ -64,7 +64,7 @@ public class PersonController
         if (persons == null)
             throw new ResourceNotFoundException(name + " " + surname);
 
-        return new ResponseEntity<>(persons.stream().map(PersonDTO::create), OK);
+        return new ResponseEntity<>(persons.stream().map(PersonDTO::fromPerson), OK);
     }
 
     @GetMapping("findbynameandsurname")
@@ -77,7 +77,7 @@ public class PersonController
         if (persons == null)
             throw new ResourceNotFoundException(name + " " + surname);
 
-        return new ResponseEntity<>(persons.stream().map(PersonDTO::create), OK);
+        return new ResponseEntity<>(persons.stream().map(PersonDTO::fromPerson), OK);
     }
 
     @GetMapping("/{id}")

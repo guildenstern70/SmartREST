@@ -25,10 +25,10 @@ data class PersonDTO(
      * The companion method can be called as
      * PersonDTO.create(person)
      */
-    companion object Factory
+    companion object
     {
         @JvmStatic
-        fun create(person: Person?): PersonDTO?
+        fun fromPerson(person: Person?): PersonDTO?
         {
             if (person == null)
                 return null
@@ -36,7 +36,7 @@ data class PersonDTO(
             val creation = this.dateToString(person.creationDate)
             val group = person.groupType.name
 
-            val phones = person.phones.map {
+            val phones = person.getPhones().map {
                 PhoneDTO(it.number, it.provider)
             }
 

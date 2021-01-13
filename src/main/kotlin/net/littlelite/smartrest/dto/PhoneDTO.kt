@@ -6,7 +6,6 @@
 
 package net.littlelite.smartrest.dto
 
-import net.littlelite.smartrest.model.Person
 import net.littlelite.smartrest.model.Phone
 import net.littlelite.smartrest.model.Provider
 
@@ -15,8 +14,8 @@ data class PhoneDTO(
     val provider: Provider
 )
 {
-    fun toPhone(person: Person): Phone
+    fun toPhone(): Phone
     {
-        return Phone(this.number, this.provider, person)
+        return Phone(this.number, this.provider)
     }
 }

@@ -33,7 +33,20 @@ data class Person(
         fetch = FetchType.EAGER,
         mappedBy = "person"
     )
-    var phones = mutableListOf<Phone>()
+    private var personPhones = mutableListOf<Phone>()
+
+    fun getPhones() = this.personPhones
+
+    fun setPhones(providedPhones: List<Phone>)
+    {
+        providedPhones.forEach { this.addPhone(it) }
+    }
+
+    fun addPhone(phone: Phone)
+    {
+        phone.person = this
+        this.personPhones.add(phone)
+    }
 
     fun changeTo(newFields: NewPersonDTO)
     {
