@@ -12,7 +12,6 @@ import net.littlelite.smartrest.dto.NewPersonDTO
 import net.littlelite.smartrest.dto.PersonDTO
 import net.littlelite.smartrest.dto.PhoneDTO
 import net.littlelite.smartrest.model.Person
-import net.littlelite.smartrest.model.Phone
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 import java.util.*

@@ -18,6 +18,8 @@ import org.springframework.core.env.Environment;
 @SpringBootApplication
 public class SmartRestApplication implements CommandLineRunner
 {
+    private final Logger logger = LoggerFactory.getLogger(SmartRestApplication.class);
+    public static final String VERSION = BuildConfig.VERSION + " (" + BuildConfig.BUILD_DATE.getTime() + ")";
 
     private Environment environment;
 
@@ -26,9 +28,6 @@ public class SmartRestApplication implements CommandLineRunner
     {
         this.environment = environment;
     }
-
-    private final Logger logger = LoggerFactory.getLogger(SmartRestApplication.class);
-    public static final String VERSION = BuildConfig.VERSION + " (" + BuildConfig.BUILD_DATE.getTime() + ")";
 
     private void hello()
     {

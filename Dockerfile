@@ -1,12 +1,11 @@
 FROM adoptopenjdk:14-hotspot-bionic
-MAINTAINER Alessio Saltarin <alessiosaltarin@gmail.com>
-USER root
 
 # Update
 RUN apt-get update \
-    && apt-get install -y curl \
-    && apt-get install -y apt-utils \
-    && apt-get -y autoclean
+    && apt-get install --no-install-recommends -y curl=7.58.* \
+    && apt-get install --no-install-recommends -y apt-utils=1.6.* \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # Add jar and run app
 VOLUME /tmp

@@ -6,6 +6,7 @@
 
 package net.littlelite.smartrest
 
+import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.boot.test.context.SpringBootTest
@@ -18,5 +19,7 @@ internal class SmartRestContextTest
     @Test
     fun `Spring Context should load`()
     {
+        Assertions.assertThat(true).isTrue
     }
+
 }
