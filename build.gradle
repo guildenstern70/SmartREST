@@ -18,6 +18,24 @@ plugins {
 
 group = "net.littlelite"
 
+dependencies {
+	implementation "org.springframework.boot:spring-boot-starter-data-jpa:$springboot_version"
+	implementation "org.springframework.boot:spring-boot-starter-web:$springboot_version"
+	implementation("org.springframework.boot:spring-boot-starter-freemarker:$springboot_version")
+	implementation("org.springframework.boot:spring-boot-starter-hateoas:$springboot_version")
+	implementation("org.springframework.boot:spring-boot-starter-validation:$springboot_version")
+	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version")
+	implementation("org.springframework.plugin:spring-plugin-core:1.2.0.RELEASE")
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+	implementation("io.springfox:springfox-swagger2:$swagger_version")
+	implementation("io.springfox:springfox-swagger-ui:$swagger_version")
+	implementation("org.jetbrains.kotlin:kotlin-reflect:$kotlin_version")
+	testImplementation("org.springframework.boot:spring-boot-starter-test:$springboot_version") {
+		exclude group: "org.junit.vintage", module: "junit-vintage-engine"
+	}
+	runtimeOnly("com.h2database:h2:$h2_version")
+}
+
 allOpen {
 	annotation("javax.persistence.Entity")
 	annotation("javax.persistence.Embeddable")
@@ -41,24 +59,6 @@ test {
 java {
 	sourceCompatibility = JavaVersion.VERSION_11
 	targetCompatibility = JavaVersion.VERSION_11
-}
-
-dependencies {
-	implementation "org.springframework.boot:spring-boot-starter-data-jpa:$springboot_version"
-	implementation "org.springframework.boot:spring-boot-starter-web:$springboot_version"
-	implementation("org.springframework.boot:spring-boot-starter-freemarker:$springboot_version")
-	implementation("org.springframework.boot:spring-boot-starter-hateoas:$springboot_version")
-	implementation("org.springframework.boot:spring-boot-starter-validation:$springboot_version")
-	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version")
-	implementation("org.springframework.plugin:spring-plugin-core:1.2.0.RELEASE")
-	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-	implementation("io.springfox:springfox-swagger2:$swagger_version")
-	implementation("io.springfox:springfox-swagger-ui:$swagger_version")
-	implementation("org.jetbrains.kotlin:kotlin-reflect:$kotlin_version")
-	testImplementation("org.springframework.boot:spring-boot-starter-test:$springboot_version") {
-		exclude group: "org.junit.vintage", module: "junit-vintage-engine"
-	}
-	runtimeOnly("com.h2database:h2:$h2_version")
 }
 
 compileJava {
@@ -85,10 +85,6 @@ repositories {
 
 test {
 	useJUnitPlatform()
-}
-
-configurations {
-	create("compile")
 }
 
 
