@@ -6,7 +6,6 @@
 
 package net.littlelite.smartrest;
 
-import net.littlelite.BuildConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,7 @@ import org.springframework.core.env.Environment;
 public class SmartRestApplication implements CommandLineRunner
 {
     private final Logger logger = LoggerFactory.getLogger(SmartRestApplication.class);
-    public static final String VERSION = BuildConfig.VERSION + " (" + BuildConfig.BUILD_DATE.getTime() + ")";
+    public static final String VERSION = "0.3.4";
 
     private Environment environment;
 
