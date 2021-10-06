@@ -18,6 +18,10 @@ plugins {
 
 group = "net.littlelite"
 
+repositories {
+	mavenCentral()
+}
+
 dependencies {
 	implementation "org.springframework.boot:spring-boot-starter-data-jpa:$springboot_version"
 	implementation "org.springframework.boot:spring-boot-starter-web:$springboot_version"
@@ -77,10 +81,6 @@ compileKotlin {
 
 compileTestKotlin {
 	kotlinOptions.jvmTarget = JavaVersion.VERSION_11
-}
-
-repositories {
-	mavenCentral()
 }
 
 test {
