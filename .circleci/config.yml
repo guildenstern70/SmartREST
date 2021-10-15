@@ -6,24 +6,20 @@ version: 2
 jobs:
   build:
     docker:
-      # specify the version you desire here
-      - image: circleci/openjdk:14.0.2-jdk-buster-node
+      - image: circleci/openjdk:16-buster-node
       
     working_directory: ~/repo
 
     environment:
-      # Customize the JVM maximum heap limit
       JVM_OPTS: -Xmx3200m
-      TERM: dumb
+      GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.workers.max=2"
 
     steps:
       - checkout
 
-      # Download and cache dependencies
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "build.gradle" }}
-            # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
       - run: gradle dependencies
@@ -33,5 +29,4 @@ jobs:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle" }}
 
-      # run tests!
       - run: gradle test
