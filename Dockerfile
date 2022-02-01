@@ -1,14 +1,16 @@
-FROM adoptopenjdk:14-hotspot-bionic
+FROM eclipse-temurin:17
 
 # Update
 RUN apt-get update \
-    && apt-get install --no-install-recommends -y curl=7.58.* \
-    && apt-get install --no-install-recommends -y apt-utils=1.6.* \
+    && apt-get install --no-install-recommends -y curl \
+    && apt-get install --no-install-recommends -y apt-utils \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Add jar and run app
+# Temp volume to save Tomcat temp files
 VOLUME /tmp
+
+# Entry point
 ARG JAR_FILE
 COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+ENTRYPOINT ["java","-jar","/app.jar"]
