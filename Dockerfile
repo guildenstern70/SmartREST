@@ -1,11 +1,4 @@
-FROM eclipse-temurin:17
-
-# Update
-RUN apt-get update \
-    && apt-get install --no-install-recommends -y curl \
-    && apt-get install --no-install-recommends -y apt-utils \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+FROM openjdk:17.0-slim-buster
 
 # Temp volume to save Tomcat temp files
 VOLUME /tmp
