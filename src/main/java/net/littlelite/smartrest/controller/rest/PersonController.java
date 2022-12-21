@@ -20,7 +20,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import javax.validation.Valid;
 import java.util.List;
 
 import static org.springframework.http.HttpStatus.OK;
@@ -94,7 +93,7 @@ public class PersonController
 
     @PutMapping("/{id}")
     public ResponseEntity<?> editPersonById(@PathVariable("id") long id,
-                                            @Valid @RequestBody NewPersonDTO person)
+                                            @RequestBody NewPersonDTO person)
     {
         this.logger.info("Received PUT REQUEST for Person #" + id);
 
@@ -108,7 +107,7 @@ public class PersonController
     }
 
     @PostMapping
-    public ResponseEntity<?> createPerson(@Valid @RequestBody NewPersonDTO person,
+    public ResponseEntity<?> createPerson(@RequestBody NewPersonDTO person,
                                           UriComponentsBuilder uriComponentsBuilder)
     {
         this.logger.info("Received POST REQUEST to create a new person");

@@ -6,10 +6,12 @@
 
 A template project with
 
-* SpringBoot
+* SpringBoot (Java+Kotlin)
 * JPA (H2 DB in memory)
 * API REST with Swagger site
 * Apache FreeMarker Template
+
+Are you looking for a pure Java implementation? Try https://github.com/guildenstern70/smartrestjava
 
 ### Build as Docker image
 

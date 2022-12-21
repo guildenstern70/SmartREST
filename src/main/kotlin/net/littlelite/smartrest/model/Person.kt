@@ -8,7 +8,7 @@ package net.littlelite.smartrest.model
 
 import net.littlelite.smartrest.dto.NewPersonDTO
 import java.util.*
-import javax.persistence.*
+import jakarta.persistence.*
 
 @Entity
 data class Person(

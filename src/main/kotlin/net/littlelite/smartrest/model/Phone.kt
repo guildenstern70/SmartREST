@@ -6,7 +6,8 @@
 
 package net.littlelite.smartrest.model
 
-import javax.persistence.*
+import jakarta.persistence.*
+
 
 @Entity
 data class Phone(
