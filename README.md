@@ -2,6 +2,8 @@
 
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/f1c670fa6a0444919661480b82ab73cb)](https://www.codacy.com/gh/guildenstern70/SmartREST/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=guildenstern70/SmartREST&amp;utm_campaign=Badge_Grade)
+![Actions CI](https://github.com/guildenstern70/SmartREST/actions/workflows/gradle.yml/badge.svg)
+
 
 A template REST API project with
 
