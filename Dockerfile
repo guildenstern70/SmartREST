@@ -1,4 +1,4 @@
-FROM openjdk:17.0-slim-buster
+FROM openjdk:19-slim-buster
 
 # Temp volume to save Tomcat temp files
 VOLUME /tmp
