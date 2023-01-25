@@ -18,7 +18,7 @@ import org.springframework.core.env.Environment;
 public class SmartRestApplication implements CommandLineRunner
 {
     private final Logger logger = LoggerFactory.getLogger(SmartRestApplication.class);
-    public static final String VERSION = "0.3.4";
+    public static final String VERSION = "0.4.0";
 
     private Environment environment;
 
@@ -31,10 +31,10 @@ public class SmartRestApplication implements CommandLineRunner
     private void hello()
     {
         String runningUrl = "http://localhost:" + this.environment.getProperty("local.server.port");
-        logger.info("*******************************************");
+        logger.info("**********************************************");
         logger.info("  SmartREST v." + VERSION);
         logger.info("  Running on " + runningUrl + " (JVM " + System.getProperty("java.version") + ")");
-        logger.info("*******************************************");
+        logger.info("**********************************************");
     }
 
     public static void main(String[] args)
