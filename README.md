@@ -1,4 +1,4 @@
-## Smart REST 
+## Smart REST (Kotlin Edition)
 
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/f1c670fa6a0444919661480b82ab73cb)](https://www.codacy.com/gh/guildenstern70/SmartREST/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=guildenstern70/SmartREST&amp;utm_campaign=Badge_Grade)
@@ -7,9 +7,9 @@
 
 A template REST API project with
 
-* SpringBoot (Java+Kotlin)
+* SpringBoot (Kotlin)
 * JPA (H2 DB in memory)
-* API REST with Swagger site
+* API REST with OpenAPI 3.0 documentation
 * Apache FreeMarker Template
 
 Are you looking for a pure Java implementation? Try https://github.com/guildenstern70/smartrestjava

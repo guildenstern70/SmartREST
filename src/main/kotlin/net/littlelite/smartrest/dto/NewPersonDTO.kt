@@ -1,6 +1,6 @@
 /*
  * Project SmartREST
- * Copyright (c) Alessio Saltarin 2022.
+ * Copyright (c) Alessio Saltarin 2022-23
  * This software is licensed under MIT License (see LICENSE)
  */
 
@@ -18,12 +18,11 @@ data class NewPersonDTO(
 {
     fun toPerson(): Person
     {
-        val p = Person(
-            this.name,
-            this.surname,
-            this.email,
-            this.group
+        return Person(
+            name,
+            surname,
+            email,
+            group
         )
-        return p
     }
 }
