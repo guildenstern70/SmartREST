@@ -36,5 +36,5 @@ class SmartRestApplication(private val environment: Environment) : CommandLineRu
 }
 
 fun main(args: Array<String>) {
-    runApplication<SmartRestApplication>(*args)
+    runApplication<SmartRestApplication>(*arrayOf(*args))
 }

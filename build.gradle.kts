@@ -7,13 +7,14 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
+	val kotlinVersion = "1.8.22"
 	id("org.springframework.boot") version "3.1.1"
 	id("io.spring.dependency-management") version "1.1.0"
-	id("org.jetbrains.kotlin.plugin.allopen") version "1.8.22"
-	id("org.jetbrains.kotlin.plugin.noarg") version "1.8.22"
-	id("org.jetbrains.kotlin.plugin.jpa") version "1.8.22"
-	kotlin("jvm") version "1.8.22"
-	kotlin("plugin.spring") version "1.8.22"
+	id("org.jetbrains.kotlin.plugin.allopen") version kotlinVersion
+	id("org.jetbrains.kotlin.plugin.noarg") version kotlinVersion
+	id("org.jetbrains.kotlin.plugin.jpa") version kotlinVersion
+	kotlin("jvm") version kotlinVersion
+	kotlin("plugin.spring") version kotlinVersion
 }
 
 group = "net.littlelite"
