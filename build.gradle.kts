@@ -7,9 +7,9 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	val kotlinVersion = "1.8.22"
-	id("org.springframework.boot") version "3.1.1"
-	id("io.spring.dependency-management") version "1.1.0"
+	val kotlinVersion = "1.9.0"
+	id("org.springframework.boot") version "3.1.2"
+	id("io.spring.dependency-management") version "1.0.11.RELEASE"
 	id("org.jetbrains.kotlin.plugin.allopen") version kotlinVersion
 	id("org.jetbrains.kotlin.plugin.noarg") version kotlinVersion
 	id("org.jetbrains.kotlin.plugin.jpa") version kotlinVersion
@@ -35,8 +35,8 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-stdlib")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0")
-	implementation("org.springdoc:springdoc-openapi-starter-webmvc-api:2.1.0")
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-api:2.2.0")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	runtimeOnly("com.h2database:h2")
 }
