@@ -1,6 +1,6 @@
 /*
  * Project SmartREST
- * Copyright (c) Alessio Saltarin 2022.
+ * Copyright (c) Alessio Saltarin 2022-23
  * This software is licensed under MIT License (see LICENSE)
  */
 
@@ -27,7 +27,6 @@ data class PersonDTO(
      */
     companion object
     {
-        @JvmStatic
         fun fromPerson(person: Person?): PersonDTO?
         {
             if (person == null)
