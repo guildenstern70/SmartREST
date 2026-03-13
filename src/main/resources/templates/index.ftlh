@@ -46,6 +46,8 @@
                         <a class="btn btn-primary btn-lg" href="/swagger-ui/index.html" role="button">API
                             Documentation</a>
                         &nbsp;
+                        <a class="btn btn-outline-primary btn-lg" href="/api/v1/catalog/openapi/download" role="button">Download OpenAPI Catalog</a>
+                        &nbsp;
                         <a class="btn btn-success btn-lg" href="/h2" role="button">H2 DB Console</a>
                     </div>
                 </div>
