@@ -54,15 +54,16 @@ internal class PersonTests
             listOf(phone1, phone2)
         )
         assertThat(created).isNotNull
-        assertThat(created!!.id).isGreaterThan(0)
+        val createdId = requireNotNull(created!!.id)
+        assertThat(createdId).isGreaterThan(0)
         assertThat(created.phones.size).isEqualTo(2)
 
-        val retrieved = this.personService.getPerson(created.id)
+        val retrieved = this.personService.getPerson(createdId)
         assertThat(retrieved).isNotNull
         assertThat(retrieved!!.email).isEqualTo("tognazziugo@supercazzola.com")
         assertThat(retrieved.phones[0].number).isEqualTo("+39-3494838990")
 
-        this.personService.deletePerson(created.id)
+        this.personService.deletePerson(createdId)
         assertThat(this.personService.getAllPersons().size).isEqualTo(4)
     }
 

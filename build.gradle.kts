@@ -1,20 +1,24 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("org.springframework.boot") version "3.2.0"
-    id("io.spring.dependency-management") version "1.1.4"
-    kotlin("jvm") version "1.9.20"
-    kotlin("plugin.spring") version "1.9.20"
-    kotlin("plugin.jpa") version "1.9.20"
-    kotlin("plugin.allopen") version "1.9.20"
-    kotlin("plugin.noarg") version "1.9.20"
+    kotlin("jvm") version "2.2.21"
+    kotlin("plugin.spring") version "2.2.21"
+    kotlin("plugin.jpa") version "2.2.21"
+    kotlin("plugin.allopen") version "2.2.21"
+    kotlin("plugin.noarg") version "2.2.21"
+    id("org.springframework.boot") version "4.0.3"
+    id("io.spring.dependency-management") version "1.1.7"
+
 }
 
 group = "net.littlelite"
+description = "Template project for microservices with Spring Boot and Kotlin"
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_21
+    sourceCompatibility = JavaVersion.VERSION_24
+    targetCompatibility = JavaVersion.VERSION_24
 }
+
 
 repositories {
     mavenCentral()
@@ -22,25 +26,33 @@ repositories {
 
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa:3.2.0")
-    implementation("org.springframework.boot:spring-boot-starter-web:3.2.0")
-    implementation("org.springframework.boot:spring-boot-starter-freemarker:3.2.0")
-    implementation("org.springframework.boot:spring-boot-starter-hateoas:3.2.0")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.20")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-    implementation("org.jetbrains.kotlin:kotlin-reflect:1.9.20")
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0")
-    implementation("org.hibernate:hibernate-validator:8.0.0.Final")
-    testImplementation( "org.springframework.boot:spring-boot-starter-test:3.2.0")
+    implementation("org.springframework.boot:spring-boot-h2console")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-freemarker")
+    implementation("org.springframework.boot:spring-boot-starter-webmvc")
+    implementation("org.springframework.boot:spring-boot-starter-hateoas")
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
+    implementation("tools.jackson.module:jackson-module-kotlin")
     runtimeOnly("com.h2database:h2")
-
+    testImplementation("org.springframework.boot:spring-boot-starter-data-jpa-test")
+    testImplementation("org.springframework.boot:spring-boot-starter-freemarker-test")
+    testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
-tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        freeCompilerArgs += "-Xjsr305=strict"
-        jvmTarget = "21"
+
+kotlin {
+    compilerOptions {
+        freeCompilerArgs.addAll("-Xjsr305=strict", "-Xannotation-default-target=param-property")
     }
 }
+
+allOpen {
+    annotation("jakarta.persistence.Entity")
+    annotation("jakarta.persistence.MappedSuperclass")
+    annotation("jakarta.persistence.Embeddable")
+}
+
 
 tasks.withType<Test> {
     useJUnitPlatform()

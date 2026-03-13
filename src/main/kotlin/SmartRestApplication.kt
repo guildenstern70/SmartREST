@@ -24,7 +24,7 @@ class SmartRestApplication(private val environment: Environment) : CommandLineRu
         logger.info("  Running on " + runningUrl + " (JVM " + System.getProperty("java.version") + ")")
         logger.info("**********************************************")
     }
-    override fun run(vararg args: String?)
+    override fun run(vararg args: String)
     {
         this.hello()
     }

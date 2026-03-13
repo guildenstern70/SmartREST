@@ -24,7 +24,7 @@ data class Person(
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    var id: Long = -1
+    var id: Long? = null
 
     var creationDate = Date()
 

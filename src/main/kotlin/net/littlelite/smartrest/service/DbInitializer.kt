@@ -26,9 +26,9 @@ class DbInitializer @Autowired constructor(private val personDAO: PersonDAO) : A
     override fun run(args: ApplicationArguments)
     {
         logger.info("Populating Database")
-        val phones = listOf(
-            Phone("348-39020292", Provider.TIM, null),
-            Phone("333-32232211", Provider.VODAFONE, null)
+        val phoneTemplates = listOf(
+            Pair("348-39020292", Provider.TIM),
+            Pair("333-32232211", Provider.VODAFONE)
         )
         val persons = arrayOf(
             Person(
@@ -50,7 +50,8 @@ class DbInitializer @Autowired constructor(private val personDAO: PersonDAO) : A
         )
         Arrays.stream(persons)
             .forEach { p: Person ->
-                p.setPhones(phones)
+                // Create new Phone entities for each person to avoid reusing persisted instances.
+                p.setPhones(phoneTemplates.map { Phone(it.first, it.second, null) })
                 logger.info("Saving $p")
                 personDAO.save(p)
             }

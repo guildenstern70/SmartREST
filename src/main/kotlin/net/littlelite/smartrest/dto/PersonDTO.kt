@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 data class PersonDTO(
-    val id: Long,
+    val id: Long? = null,
     val name: String,
     val surname: String,
     val email: String,
