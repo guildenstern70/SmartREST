@@ -7,32 +7,9 @@
     <meta name="robots" content="noindex,nofollow"/>
     <meta name="googlebot" content="noindex"/>
     <title>SmartREST - Spring Boot API Template</title>
-    <script>
-        (function () {
-            var storedTheme = localStorage.getItem("smartrest-theme");
-            var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-            var shouldUseDark = storedTheme ? storedTheme === "dark" : prefersDark;
-            if (shouldUseDark) {
-                document.documentElement.classList.add("dark");
-            }
-        })();
-    </script>
+    <script src="/js/theme-init.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            500: "#2563eb",
-                            600: "#1d4ed8"
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <script src="/js/tailwind-config.js"></script>
 </head>
 <body class="min-h-screen bg-slate-100 text-slate-900 antialiased transition-colors dark:bg-slate-950 dark:text-slate-100">
 <main class="mx-auto flex min-h-screen max-w-6xl items-center px-6 py-12 lg:px-8">
@@ -108,33 +85,7 @@
         </div>
     </section>
 </main>
-<script>
-    (function () {
-        var storageKey = "smartrest-theme";
-        var root = document.documentElement;
-        var button = document.getElementById("theme-toggle");
-        var icon = document.getElementById("theme-icon");
-
-        function isDark() {
-            return root.classList.contains("dark");
-        }
-
-        function render() {
-            var dark = isDark();
-            button.setAttribute("aria-pressed", String(dark));
-            icon.textContent = dark ? "Dark" : "Light";
-        }
-
-        button.addEventListener("click", function () {
-            var nextDark = !isDark();
-            root.classList.toggle("dark", nextDark);
-            localStorage.setItem(storageKey, nextDark ? "dark" : "light");
-            render();
-        });
-
-        render();
-    })();
-</script>
+<script src="/js/theme-toggle.js"></script>
 </body>
 
 </html>
