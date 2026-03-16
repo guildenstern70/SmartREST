@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="robots" content="noindex,nofollow"/>
     <meta name="googlebot" content="noindex"/>
-    <title>SMART REST - Spring Boot API Template</title>
+    <title>SmartREST - Spring Boot API Template</title>
     <script>
         (function () {
             var storedTheme = localStorage.getItem("smartrest-theme");
@@ -62,34 +62,43 @@
                     </p>
                 </div>
                 <div class="inline-flex items-center rounded-lg border border-slate-300 bg-slate-100 px-3 py-2 text-sm text-slate-600 dark:border-slate-700 dark:bg-slate-800/70 dark:text-slate-300">
-                    Smart REST version <span id="version" class="ml-2 font-semibold text-slate-900 dark:text-white">${version}</span>
+                    SmartREST version <span id="version" class="ml-2 font-semibold text-slate-900 dark:text-white">${version}</span>
                 </div>
             </div>
 
             <div class="grid gap-4 self-center">
                 <a
-                    class="group rounded-xl border border-brand-500/40 bg-brand-600 px-5 py-4 font-semibold text-white transition hover:bg-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-slate-900"
+                    class="group inline-flex items-center gap-3 rounded-xl border border-brand-500/40 bg-brand-600 px-5 py-4 font-semibold text-white transition hover:bg-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-slate-900"
                     href="/swagger-ui/index.html"
                     role="button"
                 >
-                    API Documentation
-                    <span class="ml-2 opacity-80 transition group-hover:translate-x-0.5 group-hover:opacity-100">-></span>
+                    <span>API Documentation</span>
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5 opacity-90 transition group-hover:translate-x-0.5 group-hover:opacity-100">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/>
+                    </svg>
                 </a>
 
                 <a
-                    class="rounded-xl border border-slate-300 bg-white px-5 py-4 font-semibold text-slate-800 transition hover:border-slate-400 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 focus:ring-offset-white dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:hover:border-slate-500 dark:hover:bg-slate-700 dark:focus:ring-offset-slate-900"
+                    class="inline-flex items-center gap-3 rounded-xl border border-slate-300 bg-white px-5 py-4 font-semibold text-slate-800 transition hover:border-slate-400 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 focus:ring-offset-white dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:hover:border-slate-500 dark:hover:bg-slate-700 dark:focus:ring-offset-slate-900"
                     href="/api/v1/catalog/openapi/download"
                     role="button"
                 >
-                    Download OpenAPI Catalog
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v10m0 0 4-4m-4 4-4-4M5 20h14"/>
+                    </svg>
+                    <span>Download OpenAPI Catalog</span>
                 </a>
 
                 <a
-                    class="rounded-xl border border-emerald-500/40 bg-emerald-600 px-5 py-4 font-semibold text-white transition hover:bg-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-slate-900"
+                    class="inline-flex items-center gap-3 rounded-xl border border-emerald-500/40 bg-emerald-600 px-5 py-4 font-semibold text-white transition hover:bg-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-slate-900"
                     href="/h2"
                     role="button"
                 >
-                    H2 Database Console
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5">
+                        <rect x="3" y="4" width="18" height="16" rx="2" ry="2"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m7 10 3 2-3 2m5 0h5"/>
+                    </svg>
+                    <span>H2 Database Console</span>
                 </a>
 
                 <p class="pt-2 text-sm leading-relaxed text-slate-500 dark:text-slate-400">
