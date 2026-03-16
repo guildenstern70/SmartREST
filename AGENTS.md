@@ -34,6 +34,7 @@
 - Kubernetes deploy path is Helm chart in `helm/` (`service.type: NodePort`, container port `8080`).
 
 ## Codebase Conventions and Pitfalls
+- When adding new files, be sure to put the header with copyright information, copying it from existing files 
 - Package root is generally `net.littlelite.smartrest` (keep new files aligned with this tree).
 - Two existing files use duplicated package prefixes:
   - `src/main/kotlin/net/littlelite/smartrest/controller/web/WebController.kt`

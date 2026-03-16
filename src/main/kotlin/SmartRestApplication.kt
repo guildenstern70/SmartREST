@@ -1,6 +1,6 @@
 /*
  * Project SmartREST
- * Copyright (c) Alessio Saltarin 2022-23
+ * Copyright (c) Alessio Saltarin 2022-26
  * This software is licensed under MIT License (see LICENSE)
  */
 
@@ -31,7 +31,7 @@ class SmartRestApplication(private val environment: Environment) : CommandLineRu
 
     companion object
     {
-        const val VERSION = "0.4.5"
+        const val VERSION = "0.5.0"
     }
 }
 

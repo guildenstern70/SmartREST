@@ -1,24 +1,20 @@
 /*
  * Project SmartREST
- * Copyright (c) Alessio Saltarin 2022-23
+ * Copyright (c) Alessio Saltarin 2022-26
  * This software is licensed under MIT License (see LICENSE)
  */
 
 package net.littlelite.smartrest.controller.rest
 
-import tools.jackson.databind.ObjectMapper
 import net.littlelite.smartrest.SmartRestApplication
 import org.slf4j.LoggerFactory
-import org.springframework.http.ContentDisposition
-import org.springframework.http.HttpHeaders
-import org.springframework.http.HttpStatus
-import org.springframework.http.MediaType
-import org.springframework.http.ResponseEntity
+import org.springframework.http.*
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping
-import java.util.TreeMap
+import tools.jackson.databind.ObjectMapper
+import java.util.*
 
 @RestController
 @RequestMapping("/api/v1/catalog")

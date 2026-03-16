@@ -1,17 +1,15 @@
 /*
 * Project SmartREST
-* Copyright (c) Alessio Saltarin 2022-23
+* Copyright (c) Alessio Saltarin 2022-26
 * This software is licensed under MIT License (see LICENSE)
 */
 
 package net.littlelite.smartrest.controller.rest
 
-import net.littlelite.smartrest.controller.rest.PersonController
 import net.littlelite.smartrest.dto.NewPersonDTO
 import net.littlelite.smartrest.dto.PersonDTO
 import net.littlelite.smartrest.exceptions.ResourceAlreadyExists
 import net.littlelite.smartrest.exceptions.ResourceNotFound
-import net.littlelite.smartrest.model.Person
 import net.littlelite.smartrest.service.PersonService
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
@@ -37,7 +35,7 @@ class PersonController @Autowired constructor(private val personService: PersonS
         }
 
     @DeleteMapping("/{id}")
-    fun deletePersonById(@PathVariable("id") id: Long): ResponseEntity<*>
+    fun deletePersonById(@PathVariable id: Long): ResponseEntity<*>
     {
         logger.info("DELETE person #$id")
         personService.deletePerson(id)
@@ -46,28 +44,30 @@ class PersonController @Autowired constructor(private val personService: PersonS
 
     @GetMapping("findby/name/{name}/surname/{surname}")
     fun getPersonByNameAndSurname(
-        @PathVariable("name") name: String,
-        @PathVariable("surname") surname: String
-    ): ResponseEntity<*>
+        @PathVariable name: String,
+        @PathVariable surname: String
+    ): ResponseEntity<List<PersonDTO>>
     {
         logger.info("GET person by name=$name and surname=$surname")
         val persons = personService.getPersonsByFullName(name, surname) ?: throw ResourceNotFound("$name $surname")
-        return ResponseEntity(persons.stream().map { obj: Person? -> PersonDTO.fromPerson(obj) }, HttpStatus.OK)
+        val personDtos = persons.mapNotNull { PersonDTO.fromPerson(it) }
+        return ResponseEntity(personDtos, HttpStatus.OK)
     }
 
     @GetMapping("findbynameandsurname")
     fun getPersonByNameAndSurnameQueries(
         @RequestParam("name") name: String,
         @RequestParam("surname") surname: String
-    ): ResponseEntity<*>
+    ): ResponseEntity<List<PersonDTO>>
     {
         logger.info("GET person by queries name=$name and surname=$surname")
         val persons = personService.getPersonsByFullName(name, surname) ?: throw ResourceNotFound("$name $surname")
-        return ResponseEntity(persons.stream().map { obj: Person? -> PersonDTO.fromPerson(obj) }, HttpStatus.OK)
+        val personDtos = persons.mapNotNull { PersonDTO.fromPerson(it) }
+        return ResponseEntity(personDtos, HttpStatus.OK)
     }
 
     @GetMapping("/{id}")
-    fun getPersonById(@PathVariable("id") id: Long): ResponseEntity<*>
+    fun getPersonById(@PathVariable id: Long): ResponseEntity<*>
     {
         logger.info("GET person #$id")
         val person = personService.getPerson(id) ?: throw ResourceNotFound(id)
@@ -76,12 +76,12 @@ class PersonController @Autowired constructor(private val personService: PersonS
 
     @PutMapping("/{id}")
     fun editPersonById(
-        @PathVariable("id") id: Long,
-        @RequestBody person: NewPersonDTO?
+        @PathVariable id: Long,
+        @RequestBody person: NewPersonDTO
     ): ResponseEntity<*>
     {
         logger.info("Received PUT REQUEST for Person #$id")
-        val personDto = personService.editPerson(id, person!!)
+        val personDto = personService.editPerson(id, person)
             ?: throw ResourceNotFound(id)
         return ResponseEntity(personDto, HttpStatus.OK)
     }

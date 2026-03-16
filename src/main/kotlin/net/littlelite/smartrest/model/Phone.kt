@@ -1,6 +1,6 @@
 /*
  * Project SmartREST
- * Copyright (c) Alessio Saltarin 2022-23
+ * Copyright (c) Alessio Saltarin 2022-26
  * This software is licensed under MIT License (see LICENSE)
  */
 
